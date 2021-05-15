@@ -3,19 +3,7 @@ from os import truncate
 
 def ler_arquivo():
     arquivo = open("usuarios.txt", "r")
-    nomes = ler_nomes(arquivo)
-
-    arquivo = open("usuarios.txt", "r")
-    espaco = ler_espaco(arquivo)
-
-    espaco_mb = []
-    for line in espaco:
-        espaco_mb.append(conversao_mb(line))
-
-    soma = somar_elementos(espaco)
-
-    total_usuarios = int(len(nomes))
-    total_usuarios_mb = conversao_mb(soma / total_usuarios)
+    usuarios = montar_dic(arquivo)
 
 
 
@@ -24,39 +12,36 @@ def ler_arquivo():
                          'ACME Inc.           Uso do espaco em disco pelos usuarios\n'
                          '------------------------------------------------------------------------\n'
                          'Nr.  Usuario        Espaco utilizado     % do uso\n')
-    cont = 0
-    for item in nomes:
-        novo_relatorio.write(f'{cont+1}') and novo_relatorio.write(f" {item:>13}") and novo_relatorio.write(f" {espaco_mb[cont]:>18}") and novo_relatorio.write(f" {calculo_percentual(int(espaco[cont])):>13}\n")
-        cont += 1
 
+
+
+    a = int(input('Você deseja apresentar quantos usuários ? (Digite 0 Para sair)\n'))
+    if (a > 0) and (a < len(usuarios)):
+        cont = 0
+        #relatório montado ordenando por ordem decrescente
+        for item in sorted(usuarios, key = usuarios.get, reverse=True):
+            novo_relatorio.write(f'{cont+1}') and novo_relatorio.write(f" {item:>13}") and novo_relatorio.write(f" {conversao_mb(usuarios[item]):>18}") and novo_relatorio.write(f" {calculo_percentual(usuarios[item]):>13}\n")
+            cont += 1
+            if cont == a:
+                break
+
+
+    soma = somar_elementos(usuarios)
+    total_usuarios_mb = conversao_mb(soma / int(len(usuarios)))
     novo_relatorio.write(f'\nEspaco total ocupado: {conversao_mb(str(soma))}\n')
     novo_relatorio.write(f'Espaco medio ocupado: {total_usuarios_mb}')
 
 
-
-
-
-
-
-
-
-
-def ler_nomes(arquivo):
+def montar_dic(arquivo):
+    usuarios = {}
     nomes = []
-    for line in arquivo:
-        a = line.split()[0]
-        nomes.append(a)
-    arquivo.close()
-    return nomes
-
-
-def ler_espaco(arquivo):
     espaco = []
     for line in arquivo:
-        a = line.split()[1]
-        espaco.append(a)
+        a = line.split()[0]
+        b = int(line.split()[1])
+        usuarios[a] = b
     arquivo.close()
-    return espaco
+    return usuarios
 
 def conversao_mb(valor):
     a = (int(valor)/1000000)
@@ -67,10 +52,10 @@ def calculo_percentual(valor):
     resultado = (100*(valor/2706966000))
     return (f'{resultado:.2f}%')
 
-def somar_elementos(lista):
+def somar_elementos(usuarios):
     soma = 0
-    for numero in lista:
-      soma += int(numero)
+    for numero in usuarios:
+      soma += int(usuarios.get(numero))
     return soma
 
 
