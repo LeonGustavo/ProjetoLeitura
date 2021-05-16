@@ -1,5 +1,4 @@
-from os import truncate
-
+import html
 
 def ler_arquivo():
     arquivo = open("usuarios.txt", "r")
@@ -26,7 +25,7 @@ def ler_arquivo():
                 break
 
 
-    soma = somar_elementos(usuarios)
+    soma = sum(usuarios.values())
     total_usuarios_mb = conversao_mb(soma / int(len(usuarios)))
     novo_relatorio.write(f'\nEspaco total ocupado: {conversao_mb(str(soma))}\n')
     novo_relatorio.write(f'Espaco medio ocupado: {total_usuarios_mb}')
@@ -51,13 +50,6 @@ def conversao_mb(valor):
 def calculo_percentual(valor):
     resultado = (100*(valor/2706966000))
     return (f'{resultado:.2f}%')
-
-def somar_elementos(usuarios):
-    soma = 0
-    for numero in usuarios:
-      soma += int(usuarios.get(numero))
-    return soma
-
 
 
 if (__name__ == "__main__"):
