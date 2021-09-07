@@ -1,34 +1,46 @@
-import html
+
 
 def ler_arquivo():
     arquivo = open("usuarios.txt", "r")
     usuarios = montar_dic(arquivo)
+    pagina = open("index.html", "w")
+    pagina.write("<html lang=\"pt-BR\">\n")
+    pagina.write("<head><title>Relatorio de Usuarios</title></head>\n")
 
 
-
-    novo_relatorio = open("relatorio.txt", "w")
+    novo_relatorio = open("relatorio.txt", "w",encoding="utf-8")
     novo_relatorio.write(''
-                         'ACME Inc.           Uso do espaco em disco pelos usuarios\n'
+                         'ACME Inc.           Uso do espaço em disco pelos usuários\n'
                          '------------------------------------------------------------------------\n'
-                         'Nr.  Usuario        Espaco utilizado     % do uso\n')
+                         'Nm.    Usuário      Espaço utilizado     % do uso\n')
 
 
 
     a = int(input('Você deseja apresentar quantos usuários ? (Digite 0 Para sair)\n'))
-    if (a > 0) and (a < len(usuarios)):
+    if (a > 0) and (a <= len(usuarios)):
         cont = 0
         #relatório montado ordenando por ordem decrescente
         for item in sorted(usuarios, key = usuarios.get, reverse=True):
-            novo_relatorio.write(f'{cont+1}') and novo_relatorio.write(f" {item:>13}") and novo_relatorio.write(f" {conversao_mb(usuarios[item]):>18}") and novo_relatorio.write(f" {calculo_percentual(usuarios[item]):>13}\n")
+            novo_relatorio.write(f'{cont+1}') and novo_relatorio.write(f" {item:>13}") \
+            and novo_relatorio.write(f" {conversao_mb(usuarios[item]):>18}") \
+            and novo_relatorio.write(f" {calculo_percentual(usuarios[item]):>13}\n")
             cont += 1
             if cont == a:
                 break
-
+    print('Relatório criado')
 
     soma = sum(usuarios.values())
     total_usuarios_mb = conversao_mb(soma / int(len(usuarios)))
-    novo_relatorio.write(f'\nEspaco total ocupado: {conversao_mb(str(soma))}\n')
-    novo_relatorio.write(f'Espaco medio ocupado: {total_usuarios_mb}')
+    novo_relatorio.write(f'\nEspaço total ocupado: {conversao_mb(str(soma))}\n')
+    novo_relatorio.write(f'Espaço médio ocupado: {total_usuarios_mb}')
+    novo_relatorio.close()
+
+
+    conteudo = open("relatorio.txt","r")
+    pagina.write("<body><pre><center><h1>\n")
+    for linhas in conteudo.readlines():
+        pagina.write(linhas)
+    pagina.write("\n</h1></center></pre></body>")
 
 
 def montar_dic(arquivo):
