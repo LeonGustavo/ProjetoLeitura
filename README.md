@@ -1,6 +1,8 @@
 # Projeto Python - Controle de Disco
 
-<img src="C:\Users\leon\Downloads\python.png" style="zoom:25%;" />
+<img src="https://lh3.googleusercontent.com/proxy/jNpPdrTNEiouto5_5X0YjsW-qBnInVAiHJI1Ggp0Lsa8fJmjn1bXd2GxZdnrALfmz-oyuu9M6mVCRjcIzwnlb1G2hEYY0tuzlGu64jrGNabaa1aqXWTsuDubkNCnfAi9enxUKCbRmaPpFBPq" alt="PET-Elétrica UFF -Introdução ao Python |" style="zoom:25%;" />
+
+
 
 1. **Controle de cotas de disco.** A ACME Inc., uma organização está tendo problemas de espaço em disco no seu servidor de arquivos. Para tentar resolver este problema, o Administrador de Rede precisa saber qual o espaço em disco ocupado pelas contas dos usuários, e identificar os usuários com maior espaço ocupado. Através de um aplicativo baixado da Internet, ele conseguiu gerar o seguinte arquivo, chamado usuarios.txt:
 
