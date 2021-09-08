@@ -1,6 +1,6 @@
 # Projeto Python - Controle de Disco
 
-<img src="https://lh3.googleusercontent.com/proxy/jNpPdrTNEiouto5_5X0YjsW-qBnInVAiHJI1Ggp0Lsa8fJmjn1bXd2GxZdnrALfmz-oyuu9M6mVCRjcIzwnlb1G2hEYY0tuzlGu64jrGNabaa1aqXWTsuDubkNCnfAi9enxUKCbRmaPpFBPq" alt="PET-Elétrica UFF -Introdução ao Python |" style="zoom:10%;" />
+<img src="https://lh3.googleusercontent.com/proxy/jNpPdrTNEiouto5_5X0YjsW-qBnInVAiHJI1Ggp0Lsa8fJmjn1bXd2GxZdnrALfmz-oyuu9M6mVCRjcIzwnlb1G2hEYY0tuzlGu64jrGNabaa1aqXWTsuDubkNCnfAi9enxUKCbRmaPpFBPq" alt="PET-Elétrica UFF -Introdução ao Python |" width="150px" />
 
 
 
